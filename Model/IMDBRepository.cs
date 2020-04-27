@@ -91,16 +91,17 @@ namespace Model
             peopleCollection.InsertOne(p);
         }
 
-        public void EliminarPersona(string name)
+        public bool EliminarPersona(string name)
         {
             if (CheckPersonaExistsInMoviesAndOscars(name))
             {
                 var filter = Builders<Persona>.Filter.Eq("name", name);
                 peopleCollection.DeleteOne(filter);
+                return true;
             }
             else
             {
-                return;
+                return false;
             }
         }
 

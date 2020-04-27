@@ -119,8 +119,10 @@ namespace Controller
                 string id = form.dgvPersones["name", e.RowIndex].Value.ToString();
                 try
                 {
-                    model.EliminarPersona(id);
-                    MessageBox.Show("Esborrat satisfactòriament!");
+                    if (model.EliminarPersona(id))
+                        MessageBox.Show("Esborrat satisfactòriament!");
+                    else
+                        MessageBox.Show("Error: La persona existeix a oscars o a movies.");
                 }
                 catch (Exception ex)
                 {
